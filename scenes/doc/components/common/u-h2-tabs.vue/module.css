@@ -1,0 +1,45 @@
+@extends 'cloud-ui.kubevue/src/components/u-tabs.vue/index.css';
+
+.root {}
+
+.head {
+    height: auto;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-right: -25px;
+    margin-left: -25px;
+    padding: 0 25px;
+}
+
+.root[appear="line"] .nav {
+    height: 48px;
+    margin-left: -25px;
+}
+
+.root[appear="line"] .item {
+    height: 48px;
+    line-height: 48px;
+    padding: 0 25px;
+    padding-bottom: 1px;
+    /* min-width: 72px; */
+    /* text-align: center; */
+    margin-right: 15px;
+    color: #999fac;
+}
+
+.root[appear="line"] .item:hover {
+    color: var(--color-base);
+}
+
+.root[appear="line"] .item[selected] {
+    color: var(--brand-primary);
+}
+
+.body {
+    margin: 0;
+}
+
+.root + p > article > h2:first-of-type {
+    margin-top: 20px;
+}
