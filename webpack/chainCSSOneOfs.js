@@ -1,5 +1,5 @@
 module.exports = function chainCSSOneOfs(config, chainOneOf) {
-    // 'postcss' 留给用户自定义吧
+    // 'postcss' is left to user customization
     ['css', 'scss', 'sass', 'less', 'stylus'].forEach((rule) => {
         const ruleCSS = config.module.rule(rule);
         chainOneOf(ruleCSS.oneOf('vue-modules'), true);

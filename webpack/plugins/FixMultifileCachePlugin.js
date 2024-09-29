@@ -18,13 +18,13 @@ module.exports = class FixMultifileCachePlugin {
                     }
 
                     if (invalidFileName && invalidFileName.endsWith('.vue') && cacheEntry.resource === invalidFileName) {
-                        // 看看能不能进一步缩小范围
+                        // Let's see if we can narrow it down further.
                     } else
                         return callback(null, cacheEntry);
                 }
                 const context = data.context || this.context;
                 const resolveOptions = Object.assign(data.resolveOptions || {}, {
-                    // 找不到好方法去 hack 进去
+                    // Can't find a good way to hack in?
                     unsafeCache: false,
                 });
                 const request = dependencies[0].request;

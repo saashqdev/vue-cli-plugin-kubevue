@@ -129,7 +129,7 @@ module.exports = function (source) {
                         { filename: 'file.js' }).program.body[0].expression,
                 });
             } else if (node.type === 'BuiltInFunction') {
-                // 调用表达式
+                // call expression
                 Object.assign(node, babel.parse(`this.$utils['${node.calleeCode}']()`, { filename: 'file.js' }).program.body[0].expression, {
                     arguments: (node.params || []).map((param) => param.value),
                 });
@@ -137,7 +137,7 @@ module.exports = function (source) {
                 const key = node.interfaceKey || '';
                 const arr = key.split('/');
                 const getParams = (key) => {
-                    // 过滤掉 null 的 param
+                    // Filter out null param
                     const nodeParams = (node.params || []).filter((param) => (param !== null && param !== 'null' && param !== ''));
                     if (key === 'body') {
                         const body = (nodeParams || [])
@@ -155,7 +155,7 @@ module.exports = function (source) {
                             });
                     }
                 };
-                // 如果是 interface 判断接口参数类型window.location.href
+                // If it is an interface, determine the interface parameter type window.location.href
                 Object.assign(node, {
                     type: 'AwaitExpression',
                     argument: babel.parse(`this.$services['${arr[0]}']['${arr[1]}']({
@@ -181,7 +181,7 @@ module.exports = function (source) {
                 // }
             } else if (node.type === 'CallFlow') {
                 const bodyParams = (node.params || [])
-                    .filter((param) => param.in === undefined) // 放在body内部的参数
+                    .filter((param) => param.in === undefined) // Parameters placed inside the body
                     .filter((param) => safeGenerate(param.value) !== undefined)
                     .map((param) => `${safeKey(param.name)}: ${safeGenerate(param.value)}`)
                     .join(',\n');
@@ -298,7 +298,7 @@ module.exports = function (source) {
                 const getParams = () => {
                     const data = (node.params || []); // .filter((param) => param.in === key);
                     const result = [];
-                    // 目前主要 id，如果字段多了之后会有严格的顺序要求， 并且 path 里面不能使用名字为 query，body，这两个参数作为需要特殊处理的 key
+                    // At present, the main id is, if there are more fields, there will be strict order requirements, and the names of query and body cannot be used in the path. These two parameters are used as keys that require special processing.
                     const pathparams = data.filter((param) => param.in === 'path');
                     if (pathparams.length > 0) {
                         pathparams.forEach((param) => {
@@ -313,7 +313,7 @@ module.exports = function (source) {
                             const value = safeGenerate(param.value);
                             return `${safeKey(param.name)}:${value}`;
                         });
-                        // key：value 转化成 queryString
+                        // key：value converted into queryString
                         result.push(`query: { ${queryValue.join(',\n')} }`);
                     }
 
@@ -323,19 +323,19 @@ module.exports = function (source) {
                             const value = safeGenerate(param.value);
                             return `${safeKey(param.name)}:${value}`;
                         });
-                        // 如果是 body 需要转化成对象
+                        // If it is body, it needs to be converted into an object
                         result.push(`body: {
                             ${bodyValue.join(',\n')}
                         }`);
                     }
-                    // 最后再把按照 key 组装后的结果返回给页面
+                    // Finally, return the result assembled according to key to the page
                     return result;
                 };
 
                 const getOperationName = (schemaRef = '', name = '') => {
                     const arr = schemaRef.split('/');
                     const entityName = arr[3];
-                    // 处理全局查询的单复数问题
+                    // Handle singular and plural issues in global queries
                     const singlename = name.includes('getAll') ? `getAll${entityName}` : name;
                     arr.pop();
                     arr.push(singlename);

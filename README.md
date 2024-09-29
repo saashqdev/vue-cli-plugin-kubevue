@@ -2,38 +2,24 @@
 
 Vue CLI Plugin for Kubevue Projects
 
-[![CircleCI][circleci-img]][circleci-url]
-[![NPM Version][npm-img]][npm-url]
-[![Dependencies][david-img]][david-url]
-[![NPM Download][download-img]][download-url]
-
-[circleci-img]: https://img.shields.io/circleci/project/github/kubevue/vue-cli-plugin-kubevue.svg?style=flat-square
-[circleci-url]: https://circleci.com/gh/kubevue/vue-cli-plugin-kubevue
-[npm-img]: http://img.shields.io/npm/v/vue-cli-plugin-kubevue.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/vue-cli-plugin-kubevue
-[david-img]: http://img.shields.io/david/kubevue/vue-cli-plugin-kubevue.svg?style=flat-square
-[david-url]: https://david-dm.org/kubevue/vue-cli-plugin-kubevue
-[download-img]: https://img.shields.io/npm/dm/vue-cli-plugin-kubevue.svg?style=flat-square
-[download-url]: https://npmjs.org/package/vue-cli-plugin-kubevue
-
 ![screenshot](./screenshot.png)
 
 ## Kubevue Config
 
 ``` js
 {
-    type: '', // Kubevue 项目类型，如：'app', 'library', 'component', 'block', 'repository'
-    outputPath: '', // 如果设置，vue.config.js 的 `outputDir` 属性
-    publicPath: '', // 如果设置，vue.config.js 的 `publicPath` 属性
-    staticPath: '', // 静态资源目录。构建时，会将该目录中的资源全部原样拷贝到输出目录下。
-    srcPath: './src', // 源文件目录。在项目中会自动注册别名'@'。
-    libraryPath: '', // 项目库目录。默认留空，表示与'srcPath'一致。在项目中会自动注册别名'@@'。
-    baseCSSPath: '', // 基础样式（如 reset 样式）的路径。默认留空，会查找'@/base/base.css'。在项目中会自动注册别名'baseCSS'。
-    theme: undefined, // 选择主题。主题 CSS 所在的路径，主题名称为 CSS 名。也可以为一个对象。
-    applyTheme: false, // 应用主题，将主题变量注入到 CSS 中。如果需要兼容 IE 浏览器，必须开启。
-    docs: false, // 文档配置
-    docStaticURL: '', // 文档静态资源 URL，默认为 https://static-kubevue.s3.amazonaws.com
-    alias: { // 用于设置 Webpack 别名
+    type: '', // Kubevue project type, such as: 'app', 'library', 'component', 'block', 'repository'
+    outputPath: '', // If set, the `outputDir` property of vue.config.js
+    publicPath: '', // If set, the `publicPath` property of vue.config.js
+    staticPath: '', // Static resource directory. When building, all resources in this directory will be copied to the output directory as they are.
+    srcPath: './src', // Source file directory. The alias '@' is automatically registered in the project.
+    libraryPath: '', // Project library directory. Leave blank by default, indicating consistency with 'srcPath'. The alias '@@' is automatically registered in the project.
+    baseCSSPath: '', // The path of the base style (such as reset style). If left blank by default, '@/base/base.css' will be searched. The alias 'baseCSS' is automatically registered in the project.
+    theme: undefined, // Select a theme. The path where the theme CSS is located, and the theme name is the CSS name. Can also be an object.
+    applyTheme: false, // Apply the theme and inject theme variables into CSS. If you need to be compatible with IE browser, it must be turned on.
+    docs: false, // Document configuration
+    docStaticURL: '', // Document static resource URL, the default is https://static-kubevue.s3.amazonaws.com
+    alias: { // Used to set Webpack alias
         '@': path.resolve(__dirname, 'src'),
         ...
     },

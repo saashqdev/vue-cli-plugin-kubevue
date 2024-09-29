@@ -28,7 +28,7 @@ module.exports = function getVariablesPostcssPlugins(config) {
         require('postcss-variables'),
         postcssKubevueExtendMerge,
         require('./postcss/custom-properties-reader'),
-        require('@kubevue/postcss-calc'),
+        require('@saashqdev/postcss-calc'),
         require('./postcss/custom-properties-reader/get-custom-properties-computed'),
     ];
 };

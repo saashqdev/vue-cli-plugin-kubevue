@@ -58,17 +58,17 @@ module.exports = function chainCSS(config, vueConfig, kubevueConfig) {
 
         if (kubevueConfig.mode !== 'raw') {
             mode === 'production' && oneOf.use('css-sprite-loader')
-                .before('postcss-loader') // 在 @vue/cli-service@4 中，已经添加了 postcss-loader
+                .before('postcss-loader') // In @vue/cli-service@4, postcss-loader has been added
                 .loader('css-sprite-loader')
                 .end()
                 .use('svg-classic-sprite-loader')
-                .before('postcss-loader') // 在 @vue/cli-service@4 中，已经添加了 postcss-loader
+                .before('postcss-loader') // In @vue/cli-service@4, postcss-loader has been added
                 .loader('svg-classic-sprite-loader')
                 .options({ filter: 'query' })
                 .end();
 
             oneOf.use('icon-font-loader')
-                .before('postcss-loader') // 在 @vue/cli-service@4 中，已经添加了 postcss-loader
+                .before('postcss-loader') // In @vue/cli-service@4, postcss-loader has been added
                 .loader('icon-font-loader')
                 .end();
         }
@@ -129,7 +129,7 @@ module.exports = function chainCSS(config, vueConfig, kubevueConfig) {
             }]);
     }
 
-    // 为了处理二次打包，添加两次 hash 的情况
+    // In order to handle the secondary packaging, add two hashes
     if (kubevueConfig.mode === 'raw') {
         config.module.rule('images').use('url-loader').tap((options) => {
             options.fallback.options.name = 'img/[hash:8]/[name].[ext]';

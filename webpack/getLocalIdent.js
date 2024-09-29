@@ -5,7 +5,7 @@ module.exports = function (loaderContext, localIdentName, localName, options) {
     if (!options.context)
         options.context = loaderContext.rootContext;
     const resourcePath = loaderContext.resourcePath;
-    // 以最外层的 Vue 包为基准
+    // Based on the outermost Vue package
     const request = path.relative(options.context, resourcePath.replace(/\.vue[\\/].*$/, ''));
     options.content = options.hashPrefix + request;
 

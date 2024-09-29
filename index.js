@@ -7,7 +7,7 @@ const registerDocBuild = require('./service/registerDocBuild');
 const registerDesigner = require('./service/registerDesigner');
 
 module.exports = function (api, vueConfig) {
-    // 需要提前知晓 theme, mode 等信息
+    // Need to know theme, mode and other information in advance
     const args = require('minimist')(process.argv.slice(2), {
         boolean: ['apply-theme'],
         alias: {
@@ -15,7 +15,7 @@ module.exports = function (api, vueConfig) {
         },
     });
 
-    const configPath = args['kubevue-config'] || process.env.VUSION_CONFIG_PATH;
+    const configPath = args['kubevue-config'] || process.env.KUBEVUE_CONFIG_PATH;
     const kubevueConfig = kubevue.config.resolve(process.cwd(), configPath, args);
 
     chainDefault(api, vueConfig, kubevueConfig);

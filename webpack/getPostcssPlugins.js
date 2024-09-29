@@ -38,7 +38,7 @@ module.exports = function getPostcssPlugins(config, vueConfig, kubevueConfig) {
         }),
         require('postcss-functions')({
             functions: {
-                // 按比例混合两种颜色
+                // Mix two colors in proportion
                 mix(c1, c2, ratio = 0.5) {
                     ratio = fixRatio(ratio);
                     const mixed = color(c1).mix(color(c2), ratio);
@@ -68,7 +68,7 @@ module.exports = function getPostcssPlugins(config, vueConfig, kubevueConfig) {
         }),
         require('postcss-url')({
         // Rewrite https://github.com/postcss/postcss-url/blob/master/src/type/rebase.js
-        // 只需将相对路径变基，其它让 Webpack 处理即可
+        // Just rebase the relative path and let Webpack handle the rest.
             url(asset, dir) {
                 if (asset.url[0] !== '.')
                     return asset.url;
