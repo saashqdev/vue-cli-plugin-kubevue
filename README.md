@@ -32,7 +32,7 @@ Vue CLI Plugin for Kubevue Projects
     theme: undefined, // 选择主题。主题 CSS 所在的路径，主题名称为 CSS 名。也可以为一个对象。
     applyTheme: false, // 应用主题，将主题变量注入到 CSS 中。如果需要兼容 IE 浏览器，必须开启。
     docs: false, // 文档配置
-    docStaticURL: '', // 文档静态资源 URL，默认为 https://static-kubevue.163yun.com
+    docStaticURL: '', // 文档静态资源 URL，默认为 https://static-kubevue.s3.amazonaws.com
     alias: { // 用于设置 Webpack 别名
         '@': path.resolve(__dirname, 'src'),
         ...

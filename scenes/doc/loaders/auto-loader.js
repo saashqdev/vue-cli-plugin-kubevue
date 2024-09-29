@@ -6,22 +6,22 @@ const loaderUtils = require('loader-utils');
 const defaults = require('./defaults');
 const _ = require('../../common/utils');
 
-// 生成routes，通过字符串拼接的形式
+// Generate routes in the form of string concatenation
 module.exports = function (content) {
     const config = loaderUtils.getOptions(this);
-    // 用于实时更新 docs 文档缓存
+    // Used to update docs document cache in real time
     config.docs = kubevue.config.resolve(process.cwd()).docs;
 
     const srcPath = config.srcPath;
     const libraryPath = config.libraryPath;
 
     this.cacheable();
-    // 动态监听目录中组件的增加
+    // Dynamically monitor the addition of components in the directory
     // this.addContextDependency(srcPath || libraryPath);
     this.addDependency(config.configPath);
     this.addDependency(config.packagePath);
 
-    // 动态生成路由
+    // Dynamically generate routes
     const docLoaderViewsPath = path.resolve(__dirname, '../views');
     this.addContextDependency(docLoaderViewsPath);
     const flatRoutesList = [_.getFlatRoutes(docLoaderViewsPath)];
@@ -40,7 +40,7 @@ module.exports = function (content) {
         components = _.getMaterials(srcPath, config.docs && config.docs.components, 'components');
         flatRoutesList[0]['/components'] && _.setChildren(flatRoutesList[0]['/components'], components);
     } else {
-        // 动态生成组件、区块、指令、过滤器、工具
+        // Dynamically generate components, blocks, directives, filters, and tools
         // @compat:
         const componentsPath = path.join(libraryPath, 'components');
         components = _.getMaterials(componentsPath, config.docs && config.docs.components, 'components');
@@ -49,7 +49,7 @@ module.exports = function (content) {
         // components.push(...components2);
         flatRoutesList[0]['/components'] && _.setChildren(flatRoutesList[0]['/components'], [].concat(components, components2));
         components.forEach((component) => {
-            // 监听 docs 目录的变更
+            // Monitor changes to the docs directory
             if (component.path && component.path.endsWith('api.yaml'))
                 this.addContextDependency(path.join(component.path, '../docs'));
         });
@@ -91,7 +91,7 @@ module.exports = function (content) {
         package: require(config.packagePath),
     });
 
-    // 只能在 dev 时添加主题参数，在 build 时会出现多次打包不一样的情况
+    // Theme parameters can only be added during dev, and there may be multiple different packages during build.
     if (process.env.NODE_ENV === 'development')
         $docs.theme = config.theme;
 

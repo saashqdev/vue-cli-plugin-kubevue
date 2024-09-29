@@ -23,18 +23,18 @@ const normalize = (routePath) => routePath
     .replace(/_($|\/)/g, '?$1')
     .replace(/\$/g, '*');
 
-// 生成routes，通过字符串拼接的形式
+// Generate routes in the form of string concatenation
 module.exports = function (content) {
     const config = loaderUtils.getOptions(this);
     this.cacheable();
-    // 动态监听目录变化，成本太高，最好是能够只监听到目录的变动
+    // The cost of dynamically monitoring directory changes is too high. It is best to only monitor directory changes.
     // this.addContextDependency(srcPath || libraryPath);
-    // @TODO: 动态监听配置变化
+    // @TODO: Dynamically monitor configuration changes
     this.addDependency(config.packagePath);
 
     const resourceDir = path.dirname(this.resourcePath);
 
-    // 动态生成路由
+    // Dynamically generate routes
     const srcPath = config.srcPath;
     const viewsPath = path.resolve(srcPath, 'views');
     this.addContextDependency(viewsPath);

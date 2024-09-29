@@ -5,7 +5,7 @@ import './dragEvents';
 import Helper from './helper.vue';
 import '../components/d-ctrl/inject';
 
-// 自动注册本地组件
+// Automatically register local components
 const requires = require.context('../components/', true, /\.vue$/);
 requires.keys().forEach((key) => {
     if (key.indexOf('.vue') !== key.lastIndexOf('.vue'))
@@ -25,7 +25,7 @@ new Vue(Helper).$mount(div);
 // Vue.prototype.$designer = $designer;
 // Vue.prototype.NODE_ENV = process.env.NODE_ENV;
 // if (process.env.NODE_ENV === 'development')
-//     window.$designer = $designer; // 方便开发时调试
+//     window.$designer = $designer; // Facilitates debugging during development
 
 window.addEventListener('message', (e) => {
     const data = e.data;

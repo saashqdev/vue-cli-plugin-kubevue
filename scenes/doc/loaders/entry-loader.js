@@ -3,7 +3,7 @@ const loaderUtils = require('loader-utils');
 module.exports = function (content) {
     const config = loaderUtils.getOptions(this);
 
-    // 两种入口
+    // Two entrances
     if (config.type === 'component') {
         content = content.replace(/\/\* DEFAULT_PROJECT start \*\/[\s\S]+\/\* DEFAULT_PROJECT end \*\/\n/g, '');
         content = content.replace(/\/\* BLOCK_PACKAGE start \*\/[\s\S]+\/\* BLOCK_PACKAGE end \*\/\n/g, '');

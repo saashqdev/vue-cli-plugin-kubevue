@@ -55,7 +55,7 @@ module.exports = function registerLibraryBuild(api, vueConfig, kubevueConfig) {
             let libraryName = kubevueConfig.CamelName || 'Library';
             if (kubevueConfig.type === 'component' || kubevueConfig.type === 'block') {
                 libraryName = kubevue.utils.kebab2Camel(path.basename(pkg.name, '.vue'));
-                // htmlCommonOptions.title = componentName + (kubevueConfig.title ? ' ' + kubevueConfig.title : '') + ' - Kubevue 物料平台';
+                // htmlCommonOptions.title = componentName + (kubevueConfig.title ? ' ' + kubevueConfig.title : '') + ' - Kubevue material platform';
             }
 
             config.output.filename('[name].js')
@@ -119,7 +119,7 @@ module.exports = function registerLibraryBuild(api, vueConfig, kubevueConfig) {
                     themes: Object.keys(kubevueConfig.theme),
                 }]);
 
-            // 关掉 url(./img/xxx) -> url(img/xxx) 的处理
+            // Turn off url(./img/xxx) -> url(img/xxx) processing
             config.plugins.has('optimize-css') && config.plugin('optimize-css').tap(([options]) => {
                 if (!options.cssnanoOptions.preset[1])
                     options.cssnanoOptions.preset[1] = {};

@@ -25,9 +25,9 @@ module.exports = function gitClone(gitPath, name, options) {
         shell.rm('-rf', '.git');
         shell.cd(name);
 
-        exec('npm i --registry=https://registry.npm.taobao.org');
+        exec('npm i --registry=https://registry.npm.org');
     }
-    // 由于 vue-cli-plugin-kubevue 在外面，有些包需要共用，指定路径和软链都不行，所以只能用拷贝的方式
+    // Since vue-cli-plugin-kubevue is outside and some packages need to be shared, specifying paths and soft links will not work, so you can only use copying.
     shell.rm('-rf', 'node_modules/vue-cli-plugin-kubevue/*');
     const files = fs.readdirSync('../../../').filter((file) => file[0] !== '.' && file !== 'test' && file !== 'node_modules');
     files.forEach((file) => shell.cp('-r', `../../../${file}`, 'node_modules/vue-cli-plugin-kubevue'));

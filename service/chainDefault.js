@@ -5,8 +5,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const proxy = require('http-proxy-middleware');
 
 module.exports = function chainDefault(api, vueConfig, kubevueConfig) {
-    // 同步 kubevueConfig 和 vueConfig 的信息，尽量以 vueConfig 为基准
-    if (kubevueConfig.publicPath) // 如果填，用'./'吧
+    // Synchronize the information of kubevueConfig and vueConfig, try to use vueConfig as the benchmark
+    if (kubevueConfig.publicPath) // If so, use './'
         vueConfig.publicPath = kubevueConfig.publicPath;
     else
         kubevueConfig.publicPath = vueConfig.publicPath;
@@ -19,7 +19,7 @@ module.exports = function chainDefault(api, vueConfig, kubevueConfig) {
     api.chainWebpack((config) => {
         const mode = config.get('mode');
 
-        // 添加 vue-cli-plugin-kubevue context 下的模块路径，防止有些包找不到
+        // Add the module path under vue-cli-plugin-kubevue context to prevent some packages from not being found
         config.resolveLoader.modules.add(path.resolve(__dirname, '../node_modules'));
 
         let themeCSS = kubevueConfig.theme.default;
@@ -56,7 +56,7 @@ module.exports = function chainDefault(api, vueConfig, kubevueConfig) {
 
         config.resolve.modules.prepend('kubevue_packages');
 
-        // @TODO: 如果全部去掉多文件 Vue 的话，就不需要这个 loader 了
+        // @TODO: If you remove all multi-file Vue, you won’t need this loader.
         config.module.rule('vue')
             .test((filePath) => /\.vue$/.test(filePath) || /\.vue[\\/]index\.js$/.test(filePath) && !fs.existsSync(path.join(filePath, '../index.vue')))
             .use('kubevue-loader')
@@ -79,7 +79,7 @@ module.exports = function chainDefault(api, vueConfig, kubevueConfig) {
         if (!fs.existsSync(staticPath))
             config.plugins.delete('copy');
         else {
-            // 有的时候找不到原来的 CopyPlugin，不知道为什么
+            // Sometimes the original CopyPlugin cannot be found, I don’t know why.
             config.plugin('copy').use(CopyPlugin, [
                 [{ from: staticPath, to: '', ignore: ['.*'] }],
             ]);
@@ -97,7 +97,7 @@ module.exports = function chainDefault(api, vueConfig, kubevueConfig) {
          * Support ifdef-loader
          * https://github.com/nippur72/ifdef-loader
          *
-         * 只在 development 才生效的代码示例
+         * Code example that only takes effect in development
          *
          * js:
          * // #if process.env.NODE_ENV === 'development'

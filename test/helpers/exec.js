@@ -1,6 +1,6 @@
 const spawnSync = require('child_process').spawnSync;
 /**
- * 使用 spawn inherit，直接打印 stdio
+ * Use spawn inherit to print directly to stdio
  */
 module.exports = (command, onError) => {
     [command, ...args] = command.split(/\s+/);

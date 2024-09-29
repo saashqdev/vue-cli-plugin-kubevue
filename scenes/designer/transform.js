@@ -31,7 +31,7 @@ const getClassNames = function (styleStr) {
 };
 
 /**
- * 该方法可以在两端(node, browser)运行
+ * This method can be run on both ends (node, browser)
  */
 exports.compilerPlugin = function compilerPlugin(ast, options, compiler) {
     const traverse = TemplateHandler.prototype.traverse;
@@ -53,18 +53,18 @@ exports.compilerPlugin = function compilerPlugin(ast, options, compiler) {
         if (!el.attrs)
             el.attrs = [];
 
-        // 没有特别好的方法，scopeId 是 vue.runtime 实现的，kubevue-node-path 目前只能通过添加属性解决
+        // There is no particularly good method. scopeId is implemented by vue.runtime, and kubevue-node-path can currently only be solved by adding attributes.
         if (!el.attrsMap.hasOwnProperty('kubevue-node-path') && !el.attrsMap.hasOwnProperty(':kubevue-node-path')) {
             el.attrsList.push({ name: 'kubevue-node-path', value: info.route });
             el.attrsMap['kubevue-node-path'] = info.route;
             const attr = { name: 'kubevue-node-path', value: JSON.stringify(info.route) };
             el.attrs.push(attr);
             el.rawAttrsMap['kubevue-node-path'] = attr;
-            // 为了添加属性，只能全部开启 false
+            // In order to add attributes, you can only turn them all on false
             el.plain = false;
         }
 
-        // 改成直接实例化页面，:class需要转换成class
+        // Change to direct instantiation of the page, :class needs to be converted to class
         if (el.attrsMap[':class'] && options.cssSuffix) {
             let classNames = getClassNames(el.classBinding);
             if (classNames.length) {
@@ -84,15 +84,15 @@ exports.compilerPlugin = function compilerPlugin(ast, options, compiler) {
             }
         }
 
-        // 打包之后
+        // After packaging
         // if (!el.attrsMap.hasOwnProperty('kubevue-scope-id') && !el.attrsMap.hasOwnProperty(':kubevue-scope-id')) {
-        //     const shortScopeId = options.scopeId.replace(/^data-v-/, '');
-        //     el.attrsList.push({ name: 'kubevue-scope-id', value: shortScopeId });
-        //     el.attrsMap['kubevue-scope-id'] = shortScopeId;
-        //     const attr = { name: 'kubevue-scope-id', value: JSON.stringify(shortScopeId) };
-        //     el.attrs.push(attr);
-        //     el.rawAttrsMap['kubevue-scope-id'] = attr;
-        //     // 为了添加属性，只能全部开启 false
+        // const shortScopeId = options.scopeId.replace(/^data-v-/, '');
+        // el.attrsList.push({ name: 'kubevue-scope-id', value: shortScopeId });
+        // el.attrsMap['kubevue-scope-id'] = shortScopeId;
+        // const attr = { name: 'kubevue-scope-id', value: JSON.stringify(shortScopeId) };
+        // el.attrs.push(attr);
+        // el.rawAttrsMap['kubevue-scope-id'] = attr;
+        // // In order to add attributes, all can only be turned on false
         //     el.plain = false;
         // }
     });
@@ -178,7 +178,7 @@ exports.compilerPlugin = function compilerPlugin(ast, options, compiler) {
                     Object.assign(text, tmp);
                 });
             }
-            // 后续根据组件说明判断是否需要加控制器
+            // Later, judge whether you need to add a controller according to the component description.
             const modals = children.filter((item) => item.tag === 'u-modal');
             if (modals.length) {
                 const queue = modals.map((item, index) => {
@@ -206,7 +206,7 @@ exports.compilerPlugin = function compilerPlugin(ast, options, compiler) {
                 node.plain = false;
             }
 
-            // 表达式处添加占位，用于添加节点操作
+            // Add a placeholder at the expression for adding node operations
             const expressions = children.filter((item) => item.type === 2);
             if (expressions.length) {
                 expressions.forEach((expression) => {
@@ -269,7 +269,7 @@ exports.compilerPlugin = function compilerPlugin(ast, options, compiler) {
                 });
             }
 
-            // 去掉元素上绑定的属性和方法。u-table-view的:data-source保留
+            // Remove the properties and methods bound to the element. u-table-view:data-source reserved
             if (node.type === 1) {
                 const excludes = [':data-source'];
                 Object.keys(node.attrsMap).forEach((attrKey) => {

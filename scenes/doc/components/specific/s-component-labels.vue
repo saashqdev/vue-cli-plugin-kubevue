@@ -12,17 +12,17 @@ export default {
     data() {
         return {
             tooltips: {
-                // 组件类型
-                'UI 组件': '通用 UI 组件',
-                图标组件: '包含一系列图标的组件',
-                布局组件: '布局组件',
-                // 组件特性
-                表单控件: '该组件继承自 MField，常用于表单中，与 UFormItem、UValidator 等组件结合可以进行表单验证',
-                表单验证器: '该组件为 UValidator 或者继承自 UValidator，可以对内部表单验证器或控件进行递归验证',
-                路由链接: '该组件可以方便添加链接或路由，类似`<router-link>`。具有 href、target、to 等属性，以及 @navigation 和 @before-navigation 事件',
-                // 展示方式
-                行内展示: '默认为行内元素。如需切换为块级展示，请添加属性`display="block"`',
-                块级展示: '默认为块级元素。如需切换为行内展示，请添加属性`display="inline"`',
+                // component type
+                'UI component': 'Generic UI component',
+                'Icon component': 'A component containing a series of icons',
+                'layout component': 'layout component',
+                // component properties
+                'Form control': 'This component inherits from MField and is often used in forms. It can be combined with UFormItem, UValidator and other components for form verification',
+                'Form Validator': 'This component is a UValidator or inherits from UValidator and can recursively validate internal form validators or controls',
+                'Router link': 'This component can easily add links or routes, similar to `<router-link>`. With href, target, to and other attributes, as well as @navigation and @before-navigation events',
+                // display method
+                'Inline display': 'Defaults to inline elements. If you want to switch to block-level display, please add the attribute `display="block"`',
+                'Block-level display': 'Defaults to block-level elements. If you want to switch to inline display, please add the attribute `display="inline"`',
             },
         };
     },

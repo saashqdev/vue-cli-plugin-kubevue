@@ -24,61 +24,61 @@
             <div :class="$style['layouts-inner']">
                 <h3 :class="$style.h3">Linear Layout</h3>
                 <div :class="$style['layouts-group']">
-                    <div :class="$style.layout" style="width: 30px; margin: 10px 20px;" title="垂直向下排列" @click="select('linear-vertical')">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 80"><path d="M0,18.4H60V0H0Z M0,38.8H60V20.4H0Z M0,59.2H60V40.8H0Z" /></svg>
+                    <div :class="$style.layout" style="width: 30px; margin: 10px 20px;" title="Vertically Arranged Downwards" @click="select('linear-vertical')">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 80"><path d="M0,18.4H60V0H0Z M0,38.8H60V20.4H0Z M0,59.2H60V40. 8H0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="左对齐排列" @click="select('linear-left')">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M18.4,0V50H0V0Z M38.8,0V50H20.4V0Z M59.2,0V50H40.8V0Z" /></svg>
+                    <div :class="$style.layout" title="Left Aligned" @click="select('linear-left')">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M18.4,0V50H0V0Z M38.8,0V50H20.4V0Z M59.2 ,0V50H40.8V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="居中对齐排列" @click="select('linear-center')">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M38.8,0V50H20.4V0Z M59.2,0V50H40.8V0Z M79.6,0V50H61.2V0Z" /></svg>
+                    <div :class="$style.layout" title="Centered Alignment" @click="select('linear-center')">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M38.8,0V50H20.4V0Z M59.2,0V50H40.8V0Z M79 .6,0V50H61.2V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="右对齐排列" @click="select('linear-right')">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M59.2,0V50H40.8V0Z M79.6,0V50H61.2V0Z M100,0V50H81.6V0Z" /></svg>
+                    <div :class="$style.layout" title="Right-Aligned Arrangement" @click="select('linear-right')">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M59.2,0V50H40.8V0Z M79.6,0V50H61.2V0Z M100 ,0V50H81.6V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="两端对齐排列" @click="select('linear-two-side')">
+                    <div :class="$style.layout" title="Align Both Ends" @click="select('linear-two-side')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M18.4,0V50H0V0Z M100,0V50H81.6V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="水平均匀分布" @click="select('linear-space-between')">
+                    <div :class="$style.layout" title="Evenly Distributed Horizontally" @click="select('linear-space-between')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M18.4,0V50H0V0Z M59.2,0V50H40.8V0Z M100,0V50H81.6V0Z" /></svg>
                     </div>
                 </div>
-                <h3 :class="$style.h3">栅格布局</h3>
+                <h3 :class="$style.h3">Grid Layout</h3>
                 <div :class="$style['layouts-group']">
-                    <div :class="$style.layout" title="一栏栅格" @click="select('grid-1-1')">
+                    <div :class="$style.layout" title="One Column Grid" @click="select('grid-1-1')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M100,0V50H0V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="两栏均匀栅格" @click="select('grid-2-2')">
+                    <div :class="$style.layout" title="Two Columns Uniform Grid" @click="select('grid-2-2')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M49,0V50H0V0Z M100,0V50H51V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="三栏均匀栅格" @click="select('grid-3-3')">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M32,0V50H0V0Z M66,0V50H34V0Z M100,0V50H68V0Z" /></svg>
+                    <div :class="$style.layout" title="Three Columns Uniform Grid" @click="select('grid-3-3')">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M32,0V50H0V0Z M66,0V50H34V0Z M100,0V50H68V0Z" /></svg >
                     </div>
-                    <div :class="$style.layout" title="四栏均匀栅格" @click="select('grid-4-4')">
+                    <div :class="$style.layout" title="Four-Column Uniform Grid" @click="select('grid-4-4')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M23.5,0V50H0V0Z M49,0V50H25.5V0Z M74.5,0V50H51V0Z M100,0V50H76.5V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="左1/3栅格" @click="select('grid-(1+2)-3')">
+                    <div :class="$style.layout" title="Left 1/3 Grid" @click="select('grid-(1+2)-3')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M32.6667,0V50H0V0Z M100,0V50H34.6667V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="右1/3栅格" @click="select('grid-(2+1)-3')">
+                    <div :class="$style.layout" title="Right 1/3 Grid" @click="select('grid-(2+1)-3')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M65.3333,0V50H0V0Z M100,0V50H67.3333V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="左1/4*2栅格" @click="select('grid-(1+1+2)-4')">
+                    <div :class="$style.layout" title="Left 1/4*2 Grid" @click="select('grid-(1+1+2)-4')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M24,0V50H0V0Z M50,0V50H26V0Z M100,0V50H52V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="右1/4*2栅格" @click="select('grid-(2+1+1)-4')">
+                    <div :class="$style.layout" title="Right 1/4*2 Grid" @click="select('grid-(2+1+1)-4')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M48,0V50H0V0Z M74,0V50H50V0Z M100,0V50H76V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="左右各1/4栅格" @click="select('grid-(1+2+1)-4')">
+                    <div :class="$style.layout" title="1/4 Grid on the Left and Right" @click="select('grid-(1+2+1)-4')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M24,0V50H0V0Z M74,0V50H26V0Z M100,0V50H76V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="五栏均匀栅格" @click="select('grid-5-5')">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M18.4,0V50H0V0Z M38.8,0V50H20.4V0Z M59.2,0V50H40.8V0Z M79.6,0V50H61.2V0Z M100,0V50H81.6V0Z" /></svg>
+                    <div :class="$style.layout" title="Five Columns Uniform Grid" @click="select('grid-5-5')">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M18.4,0V50H0V0Z M38.8,0V50H20.4V0Z M59.2 ,0V50H40.8V0Z M79.6,0V50H61.2V0Z M100,0V50H81.6V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="六栏均匀栅格" @click="select('grid-6-6')">
+                    <div :class="$style.layout" title="Six Columns Uniform Grid" @click="select('grid-6-6')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M15,0V50H0V0Z M32,0V50H17V0Z M49,0V50H34V0Z M66,0V50H51V0Z M83,0V50H68V0Z M100,0V50H85V0Z" /></svg>
                     </div>
-                    <div :class="$style.layout" title="左右各1/5栅格" @click="select('grid-(1+3+1)-5')">
+                    <div :class="$style.layout" title="1/5 Grid on the Left and Right" @click="select('grid-(1+3+1)-5')">
                         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 50"><path d="M16,0V50H0V0Z M82,0V50H18V0Z M100,0V50H84V0Z" /></svg>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ export default {
             mode: '',
             dragover: false,
             NORMAL_TEMPLATE: {
-                text: '<template> 文字 </template>',
+                text: '<template> Word </template>',
                 expression: "<template> {{ 'value' }} </template>",
             },
             globalData,
@@ -218,7 +218,7 @@ export default {
             const code = dataTransfer.getData('text/plain');
             const nodeData = JSON.parse(dataTransfer.getData('application/json') || '{}');
             if (nodeData && nodeData.command === 'changeNode') {
-                // 父拖到子里面，不允许，返回
+                // Drag the parent into the child, not allowed, return
                 if (this.nodeInfo.nodePath.startsWith(nodeData.nodePath))
                     return;
                 this.send({
@@ -257,7 +257,7 @@ export default {
             });
             this.close();
         },
-        // 用于其他地方点击时可关闭弹层
+        // Used to close the pop-up layer when clicking elsewhere
         onToggle($event, vm) {
             if ($event.opened)
                 window.dslotPopper.push(vm);

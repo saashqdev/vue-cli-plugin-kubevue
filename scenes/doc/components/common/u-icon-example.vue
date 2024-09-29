@@ -1,5 +1,5 @@
 <template>
-<div :class="$style.root" v-tooltip.top="copySucceeded ? '复制成功' : tooltip" @click="onClick" @dblclick="onDblClick">
+<div :class="$style.root" v-tooltip.top="copySucceeded ? 'Copied successfully' : tooltip" @click="onClick" @dblclick="onDblClick">
     <div :class="$style.icon">
         <component :is="icon" :name="name" :theme="theme"></component>
         <slot></slot>
@@ -19,7 +19,7 @@ export default {
     },
     data() {
         return {
-            tooltip: '单击复制`icon-font`属性，双击复制组件标签',
+            tooltip: 'Click to copy the `icon-font` attribute and double-click to copy the component label',
             copySucceeded: false,
         };
     },

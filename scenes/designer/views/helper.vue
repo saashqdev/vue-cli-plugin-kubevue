@@ -96,7 +96,7 @@ export default {
         },
     },
     mounted() {
-        // appVM 的实体是在 router 中的，所以需要延时获取
+        // The entity of appVM is in the router, so it needs to be obtained with delay
         setTimeout(() => {
             const children = Array.from(document.body.children);
             let appVM;
@@ -211,7 +211,7 @@ export default {
     },
     methods: {
         /**
-         * routePath 为 ViewPath 格式
+         * routePath is in ViewPath format
          */
         navigate(routePath, replace = true) {
             // if (!this.router)
@@ -225,11 +225,11 @@ export default {
             // this.onNavigate(to);
         },
         /**
-         * onNavigate 导航变更时触发，即 contextPath 改变
+         * onNavigate is triggered when navigation changes, that is, contextPath changes
          * @on
-         * - 页面每次加载
-         * - 路由跳转
-         * 目前只处理 history 模式
+         * - every time the page loads
+         * - route jump
+         * Currently only handles history mode
          */
         async onNavigate(contextPath) {
             // if (contextPath !== undefined)
@@ -247,7 +247,7 @@ export default {
         },
         /**
          * @on
-         * - onNavigate 导航变更时触发，即 contextPath 改变
+         * - onNavigate is triggered when navigation changes, that is, contextPath changes
          */
         reset() {
             this.hover = {};
@@ -281,7 +281,7 @@ export default {
 
             let type = node.__vue__ ? 'component' : 'element';
             let tag = type === 'component' ? (node.__vue__.$options.name || 'anonymous') : node.tagName;
-            if (node.__vue__ === this.contextVM) { // el 正好为根节点的时候
+            if (node.__vue__ === this.contextVM) { // el happens to be the root node
                 if (node.__vue__.$children.length === 1 && node.__vue__.$children[0].$el === node) {
                     type = 'component';
                     tag = node.__vue__.$children[0].$options.name || 'anonymous';
@@ -316,9 +316,9 @@ export default {
             };
         },
         /**
-         * 更新上下文实例信息
+         * Update context instance information
          * @on
-         * - onNavigate 导航变更时触发，即 contextPath 改变
+         * - onNavigate is triggered when navigation changes, that is, contextPath changes
          * - reload
          * - rerender
          */
@@ -352,7 +352,7 @@ export default {
             // copts = copts || this.contextVM.constructor.options;
         },
         /**
-         * 更新样式
+         * Update style
          * @on
          * - updateContext
          * - scroll
@@ -365,7 +365,7 @@ export default {
             this.computedMaskStyle();
         },
         /**
-         * 重新计算 Mask 样式
+         * Recalculate Mask style
          */
         computedMaskStyle() {
             this.maskStyle = {};
@@ -414,9 +414,9 @@ export default {
         cancelEvent(e) {
             if (this.dragging)
                 return;
-            if (this.$el.contains(e.target)) // helperVM 中的事件不拦截、不处理
+            if (this.$el.contains(e.target)) // Events in helperVM are not intercepted or processed
                 return;
-            if (this.isDesignerComponent(e.target)) // d-component 不拦截
+            if (this.isDesignerComponent(e.target)) // d-component does not intercept
                 return;
             e.stopImmediatePropagation();
             e.preventDefault();
@@ -425,7 +425,7 @@ export default {
             e.preventDefault();
         },
         onMouseOver(e) {
-            if (this.$el.contains(e.target)) { // helperVM 中的事件不拦截、不处理
+            if (this.$el.contains(e.target)) { // Events in helperVM are not intercepted or processed
                 if (this.isInSubMask(e) && !this.isInModal(e.target)) {
                     const nodeInfo = this.getNodeInfo(this.subVM.$el.parentElement);
                     this.hover = nodeInfo;
@@ -434,7 +434,7 @@ export default {
                 }
                 return;
             }
-            if (this.isDesignerComponent(e.target)) { // d-component 不拦截
+            if (this.isDesignerComponent(e.target)) { // d-component does not intercept
                 if (e.target.className && e.target.className.startsWith('d-text')) {
                     const nodeRect = utils.getVisibleRect(e.target.parentElement);
                     const parentRect = utils.getVisibleRect(e.target.parentElement.parentElement);
@@ -451,9 +451,9 @@ export default {
             this.hover = nodeInfo;
         },
         onMouseLeave(e) {
-            if (this.$el.contains(e.target)) // helperVM 中的事件不拦截、不处理
+            if (this.$el.contains(e.target)) // Events in helperVM are not intercepted or processed
                 return;
-            if (this.isDesignerComponent(e.target)) // d-component 不拦截
+            if (this.isDesignerComponent(e.target)) // d-component does not intercept
                 return;
             this.cancelEvent(e);
 
@@ -463,7 +463,7 @@ export default {
             this.send({
                 command: 'onClickDesigner',
             });
-            if (this.$el.contains(e.target)) { // helperVM 中的事件不拦截、不处理
+            if (this.$el.contains(e.target)) { // Events in helperVM are not intercepted or processed
                 return;
             }
             if (this.isDesignerComponent(e.target)) {
@@ -485,7 +485,7 @@ export default {
                 return;
             }
 
-            // d-slot有popup弹出，点击关闭
+            // There is a popup in d-slot, click to close it
             if (window.dslotPopper && window.dslotPopper.length) {
                 window.dslotPopper.forEach((item) => {
                     item.close();
@@ -494,7 +494,7 @@ export default {
 
             this.cancelEvent(e);
 
-            if (!(this.contextVM && this.contextVM.$el.contains(e.target) || this.isInModal(e.target))) { // 不在 contextVM 中，视为选中 contextView
+            if (!(this.contextVM && this.contextVM.$el.contains(e.target) || this.isInModal(e.target))) { // Not in contextVM, it is considered selected contextView
                 return this.selectContextView();
             }
 
@@ -515,7 +515,7 @@ export default {
                 nodeInfo.el && this.$refs.selected.$el.focus();
             });
 
-            // slot 属性可编辑
+            // The slot attribute is editable
             this.editSlotAttribute(e, nodeInfo);
         },
         isInModal(el) {
@@ -537,7 +537,7 @@ export default {
             this.selected = nodeInfo;
         },
         /**
-         * 不选具体组件，只选页面
+         * Don’t select specific components, just the page
          */
         selectContextView(e) {
             if (this.isInSubMask(e) && !this.isInModal(e.target)) {
@@ -607,7 +607,7 @@ export default {
             window.parent.postMessage({ protocol: 'kubevue', sender: 'designer', command, args }, '*');
         },
         /**
-         * 双向通信
+         * Two-way communication
          */
         execCommand(command, ...args) {
             const message = { id: uuidv4(), protocol: 'kubevue', sender: 'designer', type: 'request', command, args };
@@ -632,7 +632,7 @@ export default {
                 this.onKubevueMessage(e);
         },
         onKubevueMessage(e) {
-            if (e.data.sender === 'designer') // 排除自身
+            if (e.data.sender === 'designer') // exclude oneself
                 return;
             if (e.data.type === 'response') {
                 const message = this.requests.get(e.data.id);
@@ -776,7 +776,7 @@ export default {
             }
         },
         /**
-         * 属性转换为slot，或空的slot可添加
+         * The attribute is converted to a slot, or an empty slot can be added.
          */
         attribute2slot(selected) {
             const el = selected.el;
@@ -838,7 +838,7 @@ export default {
             const router = new VueRouter({ routes });
 
             this.appVM && this.appVM.$destroy();
-            // 重新生成实例
+            // Regenerate instance
             const appVM = initApp(router).$mount(this.appVM.$el);
             document.getElementById('loading').style.display = 'none';
 
@@ -864,8 +864,8 @@ export default {
             }, 0);
         },
         rerenderView(data) {
-            // 由slot手动插入的dtext，在点击其他区域后没有清空，会导致rerender的时候有缓存
-            // 如表格的列的增删，title的展示会保留上一列，看起来像有缓存
+            // The dtext manually inserted by the slot is not cleared after clicking on other areas, which will cause cache when rerendering.
+            // If the columns of the table are added or deleted, the display of the title will retain the previous column, which looks like there is a cache.
             this.clearDTexts();
 
             this.DEBUG_template = data;
@@ -883,7 +883,7 @@ export default {
             };
 
             /**
-             * 更新 render 函数
+             * Update render function
              */
             const puppetOptions = Object.assign({
                 plugins: [compilerPlugin],

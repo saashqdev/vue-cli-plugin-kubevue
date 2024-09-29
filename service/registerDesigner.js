@@ -23,7 +23,7 @@ module.exports = function registerDesigner(api, vueConfig, kubevueConfig, args) 
             },
         };
 
-        // 前置暴力替换，防止重启的问题
+        // Front-end brute force replacement to prevent restart problems
         predesigner();
         // npx vue-cli-service designer --pre
         args.pre && process.exit();
@@ -76,9 +76,9 @@ module.exports = function registerDesigner(api, vueConfig, kubevueConfig, args) 
             //         DOCS_IMPORTS_PATH: fs.existsSync(docsImportsPath) ? JSON.stringify(docsImportsPath) : undefined,
             //     };
 
-            // 很多 loader 与 Plugin 有结合，所以 thread-loader 不能开启
+            // Many loaders are combined with Plugin, so thread-loader cannot be enabled.
             config.module.rule('js').uses.delete('thread-loader');
-            // dev 和 designer server 同时跑好像会有问题
+            // There seems to be a problem if dev and designer server are run at the same time.
             config.module.rule('js').uses.delete('cache-loader');
             config.module.rule('vue').uses.delete('cache-loader');
             config.module.rule('vue').use('vue-loader').tap((options) => {

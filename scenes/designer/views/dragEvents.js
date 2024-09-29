@@ -1,6 +1,6 @@
 const dragKeys = ['isTrusted', 'screenX', 'screenY', 'clientX', 'clientY', 'ctrlKey', 'shiftKey', 'altKey', 'metaKey', 'button', 'buttons', 'pageX', 'pageY', 'x', 'y', 'offsetX', 'offsetY', 'movementX', 'movementY', 'layerX', 'layerY', 'detail', 'which', 'type', 'eventPhase', 'bubbles', 'cancelable', 'defaultPrevented', 'composed', 'timeStamp', 'returnValue', 'cancelBubble'];
 function createEvent(type, pe) {
-    // 懒得伪造了
+    // Too lazy to fake it
     const dataTransfer = new DataTransfer();
     dataTransfer.dropEffect = pe.dataTransfer.dropEffect;
     dataTransfer.effectAllowed = pe.dataTransfer.effectAllowed;
@@ -25,7 +25,7 @@ window.addEventListener('message', (e) => {
 
     const plainEvent = e.data;
 
-    // 在 drag 时，不会响应鼠标事件，因此只能根据 drag 相关事件处理
+    // When dragging, mouse events will not be responded to, so they can only be handled according to drag related events.
     const targets = document.elementsFromPoint(plainEvent.clientX, plainEvent.clientY);
     if (e.data.type === 'dragover') {
         // lastTargets.forEach((target) => {

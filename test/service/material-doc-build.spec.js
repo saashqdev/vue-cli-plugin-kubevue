@@ -7,7 +7,7 @@ const sleep = require('../helpers/sleep');
 
 describe('vue-cli-service doc-build', () => {
     it('cloud-ui-materials', async () => {
-        const project = gitClone('https://github.com/kubevue/cloud-ui-materials.git');
+        const project = gitClone('https://github.com/saashqdev/cloud-ui-materials.git');
         shell.cd('src/components/u-chip.vue');
         project.exec('npm run build:doc');
 

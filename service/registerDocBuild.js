@@ -12,7 +12,7 @@ module.exports = function registerDocBuild(api, vueConfig, kubevueConfig) {
     }, (args) => {
         chainDoc(api, vueConfig, kubevueConfig);
 
-        // Cloud UI 在打包时提取出来
+        // Cloud UI is extracted when packaging
         api.chainWebpack((config) => {
             config.externals({
                 vue: 'Vue',
@@ -26,7 +26,7 @@ module.exports = function registerDocBuild(api, vueConfig, kubevueConfig) {
                         { from: './dist-theme', to: 'dist-theme', ignore: ['.*'] },
                     ]]);
 
-                const docStaticURL = (kubevueConfig.docStaticURL || 'https://static-kubevue.163yun.com').replace(/\/$/g, '');
+                const docStaticURL = (kubevueConfig.docStaticURL || 'https://static-kubevue.s3.amazonaws.com').replace(/\/$/g, '');
                 config.plugin('html-tags').after('html')
                     .use(HTMLTagsPlugin, [
                         { tags: [

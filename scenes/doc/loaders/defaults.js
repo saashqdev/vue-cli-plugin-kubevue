@@ -1,8 +1,8 @@
 module.exports = {
-    title: '组件库',
+    title: 'Component Library',
     base: '',
     mode: 'hash',
     navbar: [
-        { text: '组件', to: '/components' },
+        { text: 'Components', to: '/components' },
     ],
 };

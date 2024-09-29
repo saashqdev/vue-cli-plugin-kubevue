@@ -13,7 +13,7 @@ import '../styles/vue-package.css';
 import * as CloudUI from 'cloud-ui.kubevue';
 install(Vue, CloudUI);
 
-// 自动注册本地组件
+// Automatically register local components
 const requires = require.context('../components/', true, /\.vue$/);
 requires.keys().forEach((key) => {
     if (key.indexOf('.vue') !== key.lastIndexOf('.vue'))
@@ -26,7 +26,7 @@ export default ($docs, Components, NODE_ENV) => {
     Vue.prototype.$docs = $docs;
     Vue.prototype.NODE_ENV = NODE_ENV;
     if (process.env.NODE_ENV === 'development')
-        window.$docs = $docs; // 方便开发时调试
+        window.$docs = $docs; // Facilitates debugging during development
 
     install(Vue, Components);
     if (Components.default) {
@@ -54,10 +54,10 @@ export default ($docs, Components, NODE_ENV) => {
         if (to.hash) {
             setTimeout(() => {
                 const el = document.querySelector(decodeURIComponent(to.hash));
-                // 处理导航栏的高度
+                // Handle navigation bar height
                 const navbarEl = document.querySelector('[class^=u-navbar]');
                 document.documentElement.scrollTop = (el ? el.offsetTop : 0) - (navbarEl ? navbarEl.offsetHeight : 0) - 30;
-            }, 300); // 延迟时间无法确定，暂时 300ms
+            }, 300); // The delay time cannot be determined, temporarily 300ms
         }
     });
 

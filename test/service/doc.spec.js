@@ -7,18 +7,18 @@ const sleep = require('../helpers/sleep');
 
 describe('vue-cli-service doc', () => {
     it('cloud-ui', async () => {
-        const project = gitClone('https://github.com/kubevue/cloud-ui.git');
+        const project = gitClone('https://github.com/saashqdev/cloud-ui.git');
 
         await serve(
             () => project.execa('npm run dev'),
             async ({ page, nextUpdate, helpers }) => {
                 expect((await helpers.getText('h1')).trim()).that.includes('Quickstart');
-                expect((await helpers.getText('[class^="u-navbar_item"][selected]')).trim()).to.equal('基础组件');
+                expect((await helpers.getText('[class^="u-navbar_item"][selected]')).trim()).to.equal('Basic components');
 
                 page.click('a[href="#/components/u-button"]');
                 await sleep(1000);
                 expect((await helpers.getText('h1')).trim()).that.includes('UButton');
-                expect(await helpers.hasElement('h3#设置形状')).to.be.true;
+                expect(await helpers.hasElement('h3#Set shape')).to.be.true;
                 expect(await helpers.hasElement('[class^="u-button"][color="danger"]')).to.be.true;
 
                 page.click('a[title="API"]');

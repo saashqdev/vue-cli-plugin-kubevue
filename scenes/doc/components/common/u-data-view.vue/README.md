@@ -1,7 +1,7 @@
-# DataView（数据视图）
+# DataView (data view)
 
-## 示例
-### 最简形式
+## Example
+### Simplest Form
 
 ``` html
 <u-data-view-node :value="{
@@ -17,7 +17,7 @@
 }" :expanded="true"></u-data-view-node>
 ```
 
-### 基本形式
+### Basic Form
 
 ``` html
 <u-data-view>
@@ -52,7 +52,7 @@
 }"></u-data-view>
 ```
 
-### 只读和禁用
+### Read Only and Disabled
 
 ``` html
 <u-data-view readonly :value="{

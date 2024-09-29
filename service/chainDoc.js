@@ -118,17 +118,17 @@ module.exports = function chainDoc(api, vueConfig, kubevueConfig) {
             .loader(entryLoaderPath)
             .options(defineOptions);
 
-        // 很多 loader 与 Plugin 有结合，所以 thread-loader 不能开启
+        // Many loaders are combined with Plugin, so thread-loader cannot be enabled.
         config.module.rule('js').uses.delete('thread-loader');
 
-        // Eslint 需要删除 @vue/cli-plugin-eslint
+        // Eslint needs to be deleted @vue/cli-plugin-eslint
         chainMarkdown(config, config.module.rule('markdown').test(/\.md$/));
 
         chainMarkdown(config, config.module.rule('yaml-doc').test(/[\\/]api\.yaml$/))
             .use('yaml-doc')
             .loader(yamlDocLoaderPath);
 
-        // 不需要，先关了
+        // No need, turn it off first
         config.optimization.splitChunks({
             cacheGroups: {
                 vendors: false,
@@ -139,13 +139,13 @@ module.exports = function chainDoc(api, vueConfig, kubevueConfig) {
         const htmlCommonOptions = {
             chunks: 'all',
             hash: false,
-            title: kubevueConfig.docs && kubevueConfig.docs.title || 'Kubevue 组件库',
+            title: kubevueConfig.docs && kubevueConfig.docs.title || 'Kubevue Component Library',
             favicon: path.resolve(require.resolve('../index.js'), '../logo.png'),
         };
 
         if (kubevueConfig.type === 'component' || kubevueConfig.type === 'block') {
             const componentName = kubevue.utils.kebab2Camel(path.basename(pkg.name, '.vue'));
-            htmlCommonOptions.title = componentName + (kubevueConfig.title ? ' ' + kubevueConfig.title : '') + ' - Kubevue 物料平台';
+            htmlCommonOptions.title = componentName + (kubevueConfig.title ? ' ' + kubevueConfig.title : '') + ' - Kubevue Material Platform';
         }
 
         // if (!Object.keys(kubevueConfig.theme).length <= 1) {
@@ -175,7 +175,7 @@ module.exports = function chainDoc(api, vueConfig, kubevueConfig) {
         //     //     })]);
         // }
         if (kubevueConfig.type === 'component' || kubevueConfig.type === 'block') {
-            // 在 dev 模式时便需将 Cloud UI 提取出来
+            // In dev mode, you need to extract the Cloud UI
 
             config.externals({
                 vue: 'Vue',
@@ -190,7 +190,7 @@ module.exports = function chainDoc(api, vueConfig, kubevueConfig) {
                 version = pkg.dependencies['cloud-ui.kubevue'];
             version = version.replace(/^[^\d]+/, '').split('.').slice(0, 2).join('.');
 
-            const docStaticURL = (kubevueConfig.docStaticURL || 'https://static-kubevue.163yun.com').replace(/\/$/g, '');
+            const docStaticURL = (kubevueConfig.docStaticURL || 'https://static-kubevue.s3.amazonaws.com').replace(/\/$/g, '');
 
             config.plugin('html-tags').after('html')
                 .use(HTMLTagsPlugin, [

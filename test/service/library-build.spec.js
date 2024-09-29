@@ -5,7 +5,7 @@ const sleep = require('../helpers/sleep');
 const { expect } = require('chai');
 
 describe('vue-cli-service library-build', () => {
-    const project = gitClone('https://github.com/kubevue/cloud-ui.git');
+    const project = gitClone('https://github.com/saashqdev/cloud-ui.git');
 
     it('cloud-ui', async () => {
         project.exec('npm run build');
@@ -21,7 +21,7 @@ describe('vue-cli-service library-build', () => {
             expect((await helpers.getText('a[class^="u-button"]')).trim()).that.includes('Click me');
             page.click('a[class^="u-button"]');
             await sleep(1000);
-            expect(await helpers.getText('[class^="u-modal_title"]')).to.equal('提示');
+            expect(await helpers.getText('[class^="u-modal_title"]')).to.equal('Hint');
             expect(await helpers.getText('[class^="u-modal_content"]')).to.equal('Hello World!');
         });
     });

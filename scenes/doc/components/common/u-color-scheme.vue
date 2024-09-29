@@ -1,6 +1,6 @@
 <template>
 <div :class="$style.root" :style="{ background: value }"
-     v-tooltip.top="copySucceeded ? '复制成功' : tooltip"
+     v-tooltip.top="copySucceeded ? 'Copied successfully' : tooltip"
      @click="onClick" @dblclick="onDblClick">
     <slot></slot>
     <div :class="$style.name">{{ name }}</div>
@@ -18,7 +18,7 @@ export default {
     },
     data() {
         return {
-            tooltip: '单击复制变量，双击色彩值',
+            tooltip: 'Click to copy the variable and double-click the color value',
             copySucceeded: false,
         };
     },
